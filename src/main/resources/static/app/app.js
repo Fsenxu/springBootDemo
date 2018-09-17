@@ -23,8 +23,32 @@ var demoApp =angular.module("demoApp", ["ngRoute"]);
 	}).when("/module/demoCharTest", {
 		templateUrl: "app/module/demoCharTest.html",
 		controller: demoCharTestCtrl
+	}).when("/module/userList", {
+		templateUrl: "app/module/userList.html",
+		controller: userCtrl
+	}).when("/module/imageChar", {
+			templateUrl: "app/module/imageChar.html",
+			controller: imageCharCtrl
+	}).when("/module/equView", {
+		templateUrl: "app/module/equipmentView.html",
+		controller: equCtrl
+	}).when("/module/lightLog", {
+			templateUrl: "app/module/lightLog.html",
+			controller: lightLogCtrl
+	}).when("/module/liteEqu", {
+		templateUrl: "app/module/liteEqu.html",
+		controller: liteEquCtrl
+	}).when("/module/liteApp", {
+		templateUrl: "app/module/liteApp.html",
+		controller: liteAppCtrl
+	}).when("/module/liteLog", {
+		templateUrl: "app/module/liteLog.html",
+		controller: liteLogCtrl
+	}).when("/module/warningLog", {
+			templateUrl: "app/module/warningLog.html",
+			controller: warningLogCtrl
 	}).otherwise({
-		templateUrl: "app/module/demoList.html",
-		controller: listCtrl
+		templateUrl: "app/module/home.html",
+		controller: homeCtrl
 	});
 }]);

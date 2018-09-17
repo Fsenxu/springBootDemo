@@ -27,6 +27,12 @@ public class SessionAppFilter implements Filter {
         noLoginUrl.put("/service/login",new Object());
         noLoginUrl.put("/service/updatePassword",new Object());
         noLoginUrl.put("/service/checkLogin",new Object());
+        noLoginUrl.put("/service/liangPost",new Object());
+        noLoginUrl.put("/service/liangClear",new Object());
+        noLoginUrl.put("/service/getDataChange",new Object());
+        noLoginUrl.put("/service/queryLiteAll",new Object());
+        noLoginUrl.put("/service/deleteLiteAll",new Object());
+        noLoginUrl.put("/service/liteNaCallback2",new Object());
     }
 
     @Override
@@ -41,7 +47,8 @@ public class SessionAppFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         try {
             String uri = request.getServletPath();
-            if(noLoginUrl.get(uri) == null){
+            
+            if(noLoginUrl.get(uri) == null&&!uri.contains("/service/nbiotCallback/")){
                 if(ServletUtil.getSessionUser() == null){
                     ServletUtil.writeToResponse(response,ServletUtil.NO_LOGIN_RESULT);
                     return;

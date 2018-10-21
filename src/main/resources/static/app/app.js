@@ -35,6 +35,9 @@ var demoApp =angular.module("demoApp", ["ngRoute"]);
 	}).when("/module/lightLog", {
 			templateUrl: "app/module/lightLog.html",
 			controller: lightLogCtrl
+	}).when("/module/nbLightLog", {
+		templateUrl: "app/module/nbLightLog.html",
+		controller: nbLightLogCtrl
 	}).when("/module/liteEqu", {
 		templateUrl: "app/module/liteEqu.html",
 		controller: liteEquCtrl

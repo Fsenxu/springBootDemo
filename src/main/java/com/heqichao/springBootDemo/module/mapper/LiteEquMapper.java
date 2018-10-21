@@ -75,6 +75,18 @@ public interface LiteEquMapper {
 	
     @Delete("update lite_equipment set status = 'C',update_time=sysdate(),update_uid=#{uid} where status = 'N' and id= #{id}   ")
     int deleteById(@Param("id")Integer id,@Param("uid")Integer uid);
+    
+    @Select("SELECT deviceId FROM lite_equipment where own_id = #{uid}  and STATUS = 'N' ")
+	public List<String> getUserNBEquipmentIdList(@Param("uid") Integer uid);
+	
+	@Select("SELECT e.deviceId FROM lite_equipment e,user u where e.own_id = u.parent_id  and u.id=#{uid} and e.STATUS = 'N' ")
+	public List<String> getUserNBEquipmentIdListByParent(@Param("uid") Integer uid);
+	
+	@Select("SELECT deviceId FROM lite_equipment where e_status = #{status}  and STATUS = 'N' ")
+	public List<String> getNBEquipmentByStatus(@Param("status") String  status);
+	
+	@Select("SELECT deviceId FROM lite_equipment where STATUS = 'N' ")
+	public List<String> getNBEquipmentIdListAll();
 
 
 }

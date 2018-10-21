@@ -25,4 +25,10 @@ public interface LiteNAService {
 	void deleteAll();
 
 	PageInfo queryLites();
+
+
+
+	void chg(Object map);
+
+	PageInfo queryNBLightLog();
 }

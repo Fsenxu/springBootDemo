@@ -23,6 +23,9 @@ public interface EquipmentMapper {
 	@Select("SELECT eid FROM equipment where own_id = #{uid}  and STATUS = 'Y' ")
 	public List<String> getUserEquipmentIdList(@Param("uid") Integer uid);
 	
+	@Select("SELECT e.eid FROM equipment e,user u where e.own_id = u.parent_id  and u.id=#{uid} and e.STATUS = 'Y' ")
+	public List<String> getUserEquipmentIdListByParent(@Param("uid") Integer uid);
+	
 	@Select("SELECT eid FROM equipment where e_status = #{status}  and STATUS = 'Y' ")
 	public List<String> getEquipmentByStatus(@Param("status") String  status);
 	

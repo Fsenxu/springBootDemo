@@ -51,6 +51,10 @@ public class EquipmentServiceImpl implements EquipmentService {
     	return eMapper.getUserEquipmentIdList(uid);
     }
     @Override
+    public List<String> getUserEquipmentIdListByParent(Integer uid) {
+    	return eMapper.getUserEquipmentIdListByParent(uid);
+    }
+    @Override
     public List<String> getEquipmentIdListAll() {
     	return eMapper.getEquipmentIdListAll();
     }

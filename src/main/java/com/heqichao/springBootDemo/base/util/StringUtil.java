@@ -42,4 +42,27 @@ public class StringUtil {
     		return null;
     	}
     }
+    
+    /**
+     * 字符串转字符串数组（每两位字符）
+     * @param str
+     * @return String[]
+     */
+    public static String[] string2StringArray(String str) {
+	    int m=str.length()/2;
+	    if(m*2<str.length()){
+	    	m++;
+	    }
+	    String[] strs=new String[m];
+	    int j=0;
+	    for(int i=0;i<str.length();i++){
+		    if(i%2==0){
+		    	strs[j]=""+str.charAt(i);
+		    }else{
+		    	strs[j]=strs[j]+str.charAt(i);
+		    	j++;
+		    }
+	    }
+	    return strs;
+	}
 }

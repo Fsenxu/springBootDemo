@@ -1,5 +1,6 @@
 package com.heqichao.springBootDemo.module.mapper;
 
+import com.heqichao.springBootDemo.module.entity.LightningLog;
 import com.heqichao.springBootDemo.module.entity.LiteLog;
 import org.apache.ibatis.annotations.*;
 
@@ -43,6 +44,22 @@ public interface LiteLogMapper {
 
     @Delete("update lite_log set l_status = 'C' where l_status = 'N'   ")
     int deleteAll();
+    
+    @Select("<script>"
+            +"SELECT *  FROM lite_log_lightning  where devEUI in  "
+            + "<foreach  collection=\"list\" open=\"(\" close=\")\" separator=\",\" item=\"uid\" >"
+            + "#{uid}"
+            + "</foreach>"
+            + "<if test =\"functionCode !=null   and functionCode!=''  \"> and functionCode like CONCAT(CONCAT('%',#{functionCode}),'%')  </if>"
+            + "<if test =\"devEUI !=null  and devEUI!='' \"> and devEUI like CONCAT(CONCAT('%',#{devEUI}),'%')  </if>"
+            + "<if test =\"start !=null  and start!=''\"> and ligntningTime &gt;= #{start} </if>" //大于等于
+            + "<if test =\"end !=null  and end!='' \"> and ligntningTime &lt;= #{end} </if>"  // 小于等于
+            +" and status ='N' order by ligntningTime desc  "
+            +"</script>")
+     List<LightningLog> queryLightningLogByDevIds(@Param("list") List<String> list,@Param("devEUI") String devEUI,@Param("end") String end,@Param("start") String start,@Param("functionCode") String functionCode);
 
+    @Insert("insert into lite_log_lightning (devEUI,time,fPort,gatewayCount,rssi,fCnt,loRaSNR,data,devicePath,functionCode,dataLen,ligntningCount,ligntningTime,peakValue,effectiveValue,waveHeadTime,halfPeakTime,actionTime,energy,status)"
+            + " values(#{devEUI},#{time},#{fPort},#{gatewayCount},#{rssi},#{fCnt},#{loRaSNR},#{data},#{devicePath},#{functionCode},#{dataLen}, #{ligntningCount}, #{ligntningTime}, #{peakValue}, #{effectiveValue}, #{waveHeadTime}, #{halfPeakTime}, #{actionTime}, #{energy}, #{status}) ")
+     int saveLightningLog(LightningLog log);
 
 }

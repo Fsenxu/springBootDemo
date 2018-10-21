@@ -1,6 +1,7 @@
 package com.heqichao.springBootDemo.module.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -210,5 +211,17 @@ public class LiteEquServiceImp implements LiteEquService {
 		return data.get("accessToken");
 	}
 	
+	@Override
+    public List<String> getUserNBEquipmentIdList(Integer uid) {
+    	return liteEquMapper.getUserNBEquipmentIdList(uid);
+    }
+    @Override
+    public List<String> getUserNBEquipmentIdListByParent(Integer uid) {
+    	return liteEquMapper.getUserNBEquipmentIdListByParent(uid);
+    }
+    @Override
+    public List<String> getNBEquipmentIdListAll() {
+    	return liteEquMapper.getNBEquipmentIdListAll();
+    }
 	
 }

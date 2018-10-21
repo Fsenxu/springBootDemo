@@ -148,8 +148,11 @@ public class LightningLogServiceImpl implements LightningLogService {
 
             } else  if(UserService.CUSTOMER.equals(cmp)){  //用户查自己设备
                 list=equipmentService.getUserEquipmentIdList(ServletUtil.getSessionUser().getId());
+            } else {
+            	list=equipmentService.getUserEquipmentIdListByParent(ServletUtil.getSessionUser().getId());
+            	
             }
-            //访客不允许
+            //访客查询父设备
         }
         return list;
     }

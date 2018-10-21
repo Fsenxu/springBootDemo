@@ -1,5 +1,7 @@
 package com.heqichao.springBootDemo.module.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.heqichao.springBootDemo.base.param.ResponeResult;
 
@@ -15,6 +17,9 @@ public interface LiteEquService {
 	ResponeResult updLiteEqu();
 	ResponeResult cmdLiteEqu() throws Exception;
 	ResponeResult getEquForCmd();
-	ResponeResult getAppSelectList(); 
+	ResponeResult getAppSelectList();
+	List<String> getUserNBEquipmentIdList(Integer uid);
+	List<String> getUserNBEquipmentIdListByParent(Integer uid);
+	List<String> getNBEquipmentIdListAll(); 
 
 }

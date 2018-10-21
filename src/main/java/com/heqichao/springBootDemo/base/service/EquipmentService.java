@@ -47,5 +47,7 @@ public interface EquipmentService {
 	 */
 	Integer queryRange(String eid);
 
+	List<String> getUserEquipmentIdListByParent(Integer uid);
+
 
 }

@@ -33,8 +33,8 @@ public class LiteNAController {
 	}
 	
 	@RequestMapping(value = "/nbiotCallback/{callurl:^[A-Za-z0-9]+$}")
-	ResponeResult liteNaCallback() throws Exception {
-		liteNAService.chg();
+	ResponeResult liteNaCallback(@RequestBody Object map) throws Exception {
+		liteNAService.chg(map);
 		return new ResponeResult();
 	}
 
@@ -53,4 +53,9 @@ public class LiteNAController {
 		liteNAService.deleteAll();
 		return new ResponeResult();
 	}
+	
+	@RequestMapping(value = "/queryNBLightLog")
+    ResponeResult queryLightLogs() {
+        return new ResponeResult(liteNAService.queryNBLightLog());
+    }
 }
